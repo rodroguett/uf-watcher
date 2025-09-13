@@ -69,3 +69,5 @@ end
 gem "tailwindcss-rails"
 
 gem "rails-i18n"
+
+gem "whenever", require: false
