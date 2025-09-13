@@ -1,5 +1,3 @@
-# Archivo de seed generado automáticamente
-
 UfValue.create(date: '2025-01-01', value: 38419.17)
 UfValue.create(date: '2025-01-02', value: 38421.65)
 UfValue.create(date: '2025-01-03', value: 38424.12)
