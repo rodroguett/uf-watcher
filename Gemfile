@@ -65,3 +65,7 @@ end
 group :development, :test do
   gem "dotenv-rails"
 end
+
+gem "tailwindcss-rails"
+
+gem "rails-i18n"
