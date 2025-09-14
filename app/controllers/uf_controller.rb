@@ -1,18 +1,33 @@
 class UfController < ApplicationController
   def index
-    @uf_value = UfValue.find_by(date: Date.today)
+    today_date = Date.today.strftime("%Y-%m-%d")
+
+    # Use cache for today's UF value
+    @uf_value = Rails.cache.fetch("uf_value_#{today_date}", expires_in: 1.day) do
+      UfValue.find_by(date: Date.today)
+    end
   end
 
   def show
-    begin
-      search_date = Date.parse(params[:date])
-      @uf_value = UfValue.find_by(date: search_date)
+    date = params[:date]
 
-      if @uf_value.nil?
-        flash.now[:alert] = "Valor de UF no encontrado para la fecha seleccionada."
+    if date.blank?
+      flash.now[:alert] = "La fecha no puede estar vacía."
+      render :index
+      return
+    end
+
+    begin
+      search_date = Date.parse(date)
+
+      # Use cache for the selected date
+      cache_key = "uf_value_#{search_date}"
+      @uf_value = Rails.cache.fetch(cache_key, expires_in: 1.day) do
+        UfValue.find_by(date: search_date)
       end
+
     rescue ArgumentError
-      flash.now[:alert] = "Fecha inválida. Por favor, ingrese una fecha válida."
+      flash.now[:alert] = "Formato de fecha inválido. Por favor, usa YYYY-MM-DD."
     end
     render :index
   end

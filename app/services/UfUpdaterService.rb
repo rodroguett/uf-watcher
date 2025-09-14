@@ -33,7 +33,10 @@ class UfUpdaterService
         uf.value = uf_value
       end
 
-      log_info("UF value for #{uf_date} updated successfully: $#{uf_value}.")
+      # Invalidate the cache after updating the database to ensure data is consistent
+      Rails.cache.delete("uf_value_#{uf_date}")
+
+      log_info("UF value for #{uf_date} updated successfully and cache invalidated: $#{uf_value}.")
     else
       log_error("Could not find UF value in the API response.")
     end
