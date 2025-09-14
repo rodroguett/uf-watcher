@@ -1,24 +1,41 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# UF Watcher
 
-* Ruby version
+Esta es una aplicación web en Ruby on Rails que permite consultar el valor de la Unidad de Fomento (UF) para una fecha específica o para el día actual, obteniendo los datos de la API de la CMF.
 
-* System dependencies
+## Configuración para Ejecución Local
 
-* Configuration
+Para ejecutar esta aplicación en tu entorno local, es necesario configurar algunas variables de entorno esenciales, especialmente para la base de datos y la conexión a la API.
 
-* Database creation
+### Variables de Entorno
 
-* Database initialization
+Debes crear un archivo .env en la raíz de tu proyecto para almacenar las siguientes variables de forma segura. Asegúrate de no subir este archivo a tu repositorio de Git.
 
-* How to run the test suite
+`DATABASE_USERNAME=tu_usuario_de_postgresql
+DATABASE_PASSWORD=tu_contraseña_de_postgresql
+CMF_API_KEY=tu_clave_api_de_la_cmf`
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+Importante: Reemplaza los valores de ejemplo con tus credenciales y tu clave de API reales.
+
+### Pasos para Iniciar la Aplicación
+
+Una vez que hayas configurado el archivo .env, sigue estos pasos para levantar el proyecto:
+
+#### Instalar las gemas:
+
+`bundle install`
+
+#### Crear y migrar la base de datos:
+
+`rails db:create
+rails db:migrate`
+
+
+#### Iniciar el servidor de Rails:
+
+`rails server`
+
+La aplicación estará disponible en http://localhost:3000.
