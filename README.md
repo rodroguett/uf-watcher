@@ -12,9 +12,11 @@ Para ejecutar esta aplicación en tu entorno local, es necesario configurar algu
 
 Debes crear un archivo .env en la raíz de tu proyecto para almacenar las siguientes variables de forma segura. Asegúrate de no subir este archivo a tu repositorio de Git.
 
-`DATABASE_USERNAME=tu_usuario_de_postgresql
-DATABASE_PASSWORD=tu_contraseña_de_postgresql
-CMF_API_KEY=tu_clave_api_de_la_cmf`
+`DATABASE_USERNAME=tu_usuario_de_postgresql`
+
+`DATABASE_PASSWORD=tu_contraseña_de_postgresql`
+
+`CMF_API_KEY=tu_clave_api_de_la_cmf`
 
 
 
@@ -30,8 +32,13 @@ Una vez que hayas configurado el archivo .env, sigue estos pasos para levantar e
 
 #### Crear y migrar la base de datos:
 
-`rails db:create
-rails db:migrate`
+`rails db:create`
+
+`rails db:migrate`
+
+#### Para dejar corriendo el crontab 1 vez al día para recuperar el valor del día de la UF:
+
+`whenever --update-crontab`
 
 
 #### Iniciar el servidor de Rails:
