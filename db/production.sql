@@ -1,0 +1,4 @@
+CREATE DATABASE uf_watcher_production;
+CREATE DATABASE uf_watcher_production_cache;
+CREATE DATABASE uf_watcher_production_queue;
+CREATE DATABASE uf_watcher_production_cable;
