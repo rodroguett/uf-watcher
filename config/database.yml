@@ -84,8 +84,9 @@ production:
   primary: &primary_production
     <<: *default
     database: uf_watcher_production
-    username: uf_watcher
-    password: <%= ENV["UF_WATCHER_DATABASE_PASSWORD"] %>
+    username: dataprop_user
+    password: <%= ENV["DATABASE_PASSWORD"] %>
+    host: uf_watcher-db
   cache:
     <<: *primary_production
     database: uf_watcher_production_cache
